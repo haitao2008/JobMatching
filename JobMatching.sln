@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobMatching", "JobMatching\JobMatching.csproj", "{F978FC08-61D6-4EAE-A42A-2E0A52A89B16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobMatchingTests", "JobMatchingTests\JobMatchingTests.csproj", "{36651D84-200D-4B17-91A6-C4A6CD3F21FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F978FC08-61D6-4EAE-A42A-2E0A52A89B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F978FC08-61D6-4EAE-A42A-2E0A52A89B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F978FC08-61D6-4EAE-A42A-2E0A52A89B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F978FC08-61D6-4EAE-A42A-2E0A52A89B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36651D84-200D-4B17-91A6-C4A6CD3F21FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36651D84-200D-4B17-91A6-C4A6CD3F21FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36651D84-200D-4B17-91A6-C4A6CD3F21FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36651D84-200D-4B17-91A6-C4A6CD3F21FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {224BF00A-3488-49AF-81EF-AFA125C15CD5}
+	EndGlobalSection
+EndGlobal
