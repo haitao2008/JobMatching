@@ -1,1 +1,40 @@
-<p>job-list works!</p>
+<section>
+  <div class="container-fluid mx-auto" >
+    <div class="row ">
+      <div class="col-md-12">
+        <h1>
+          <span id="h1-rectangle"></span>Job List
+        </h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="table-responsive" >
+        <table class="table table-striped data-table ">
+          <thead>
+            <tr>
+              <th> Job Id</th>
+              <th> Name</th>
+              <th> Company</th>
+              <th>Skills required </th>
+              <th > </th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let job of jobs$ | async ">
+              <td scope="row">
+               {{job.jobId}}
+              </td>
+              <td>
+                {{job.name}}
+              </td>
+              <td>< {{job.company}}</td>
+              <td>< {{job.skills}}</td>
+              <td>view matched candidate</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

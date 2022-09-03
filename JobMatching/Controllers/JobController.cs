@@ -6,7 +6,7 @@ using System.Net.Mime;
 
 namespace JobMatching.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class JobController : ControllerBase
     {
