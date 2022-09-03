@@ -1,0 +1,15 @@
+.gitignore
+.openapi-generator-ignore
+README.md
+api.module.ts
+api/api.ts
+api/job.service.ts
+configuration.ts
+encoder.ts
+git_push.sh
+index.ts
+model/candidate.ts
+model/job.ts
+model/jobCandidate.ts
+model/models.ts
+variables.ts
