@@ -4,7 +4,7 @@
     {
         public int CandidateId { get; set; }
         public string Name { get; set; }
-        public string Company { get; set; }
+   
         public string SkillTags { get; set; }
 
         public List<string> Skill_Tag

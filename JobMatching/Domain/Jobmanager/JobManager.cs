@@ -1,16 +1,45 @@
-﻿using JobMatching.Domain.Models;
+﻿using JobMatching.Domain.Interfaces;
+using JobMatching.Domain.Models;
 using System.Net.Http;
 using System.Text.Json;
 
 namespace JobMatching.Domain.Jobmanager
 {
-    public class JobManager
+    public class JobManager: IJobManager
     {
 
         private static List<Job> All_Jobs = new List<Job>();
         private static List<Candidate> All_Candidates = new List<Candidate>();
 
 
+        public JobCandidate GetJobCandidate(int jobId)
+        {
+            var result = new JobCandidate();
+            var job = GetJobs().FirstOrDefault(x => x.JobId == jobId);
+            if(job != null)
+            {
+                var candidates = JobManager.Get_All_Candidates();          
+                var mostMatchedCandidate = candidates.MaxBy(x => x.Skill_Tag.Intersect(job.Skill_Tag).Count());
+               
+                if (mostMatchedCandidate != null)
+                {
+                    var matchedTags = candidates
+                                       .Select(x => x.Skill_Tag.Intersect(job.Skill_Tag).Count())
+                                       .Max();
+                    result.Match = true;
+                    result.Job = job;
+                    result.MatchedCandidate = mostMatchedCandidate;
+                    result.TagMatched = matchedTags;
+                }
+            }
+
+            return result;
+        }
+
+        public List<Job> GetJobs()
+        {
+            return Get_All_Jobs();
+        }
 
         public static List<Job> Get_All_Jobs()
         {
