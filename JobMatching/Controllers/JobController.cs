@@ -29,7 +29,7 @@ namespace JobMatching.Controllers
         [HttpGet]
         [Route("MatchedCandidate/{jobId}")]
         [Consumes(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<JobCandidate>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(JobCandidate))]
         [Produces("application/json")]
         public IActionResult GetMatchedCandidate(int jobId)
         {
