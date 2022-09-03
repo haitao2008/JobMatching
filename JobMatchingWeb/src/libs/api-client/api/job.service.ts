@@ -34,7 +34,7 @@ import { Configuration }                                     from '../configurat
 })
 export class JobService {
 
-    protected basePath = 'http://localhost/api';
+    protected basePath = 'http://localhost:4200';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
@@ -93,10 +93,10 @@ export class JobService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public jobGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<Job>>;
-    public jobGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<Job>>>;
-    public jobGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<Job>>>;
-    public jobGet(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+    public apiJobGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<Job>>;
+    public apiJobGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<Job>>>;
+    public apiJobGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<Job>>>;
+    public apiJobGet(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -129,7 +129,7 @@ export class JobService {
             }
         }
 
-        return this.httpClient.get<Array<Job>>(`${this.configuration.basePath}/Job`,
+        return this.httpClient.get<Array<Job>>(`${this.configuration.basePath}/api/Job`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -146,12 +146,12 @@ export class JobService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public jobMatchedCandidateJobIdGet(jobId: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<JobCandidate>>;
-    public jobMatchedCandidateJobIdGet(jobId: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<JobCandidate>>>;
-    public jobMatchedCandidateJobIdGet(jobId: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<JobCandidate>>>;
-    public jobMatchedCandidateJobIdGet(jobId: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+    public apiJobMatchedCandidateJobIdGet(jobId: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<JobCandidate>;
+    public apiJobMatchedCandidateJobIdGet(jobId: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<JobCandidate>>;
+    public apiJobMatchedCandidateJobIdGet(jobId: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<JobCandidate>>;
+    public apiJobMatchedCandidateJobIdGet(jobId: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (jobId === null || jobId === undefined) {
-            throw new Error('Required parameter jobId was null or undefined when calling jobMatchedCandidateJobIdGet.');
+            throw new Error('Required parameter jobId was null or undefined when calling apiJobMatchedCandidateJobIdGet.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -185,7 +185,7 @@ export class JobService {
             }
         }
 
-        return this.httpClient.get<Array<JobCandidate>>(`${this.configuration.basePath}/Job/MatchedCandidate/${encodeURIComponent(String(jobId))}`,
+        return this.httpClient.get<JobCandidate>(`${this.configuration.basePath}/api/Job/MatchedCandidate/${encodeURIComponent(String(jobId))}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
