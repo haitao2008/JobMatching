@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { observable, Observable } from 'rxjs';
+import { Observable, lastValueFrom} from 'rxjs';
 import { JobService, JobCandidate} from 'src/libs/api-client';
 
 @Component({
@@ -17,10 +17,20 @@ export class JobCandidateComponent implements OnInit {
 
   jobId: number;
   jobCandidate$!: Observable<JobCandidate>;
+  jobCandidate!: JobCandidate;
 
-  ngOnInit(): void {
+  async ngOnInit()  {
     this.jobId = this.activatedRoute.snapshot.params['jobId'];
     this.jobCandidate$ = this.jobService.apiJobMatchedCandidateJobIdGet(this.jobId);
+    this.jobCandidate = await lastValueFrom(this.jobCandidate$);
+  }
+
+   skillMatched(skill: string) : boolean{
+
+    if(this.jobCandidate.match){
+      return this.jobCandidate.job!.skill_Tag!.some(x => x===skill);
+    }
+    return false;
   }
 
 }

@@ -22,7 +22,7 @@
           </thead>
           <tbody >
             <tr *ngFor="let job of jobs$ | async ">
-              <td scope="row">
+              <td>
                {{job.jobId}}
               </td>
               <td>
@@ -30,7 +30,7 @@
               </td>
               <td> {{job.company}}</td>
               <td>{{job.skills}}</td>
-              <td>view matched candidate</td>
+              <td><a routerLink="/app-job-candidate/{{job.jobId}}"><button >View matched candidate</button> </a></td>
             </tr>
           </tbody>
         </table>

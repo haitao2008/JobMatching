@@ -1,1 +1,90 @@
-<p>job-candidate works!</p>
+<section>
+  <div>
+    <a routerLink="/app-job-list">
+      Go back
+    </a>
+  </div>
+  <div class="container-fluid mx-auto" >
+    <div class="row padBottom100">
+      <div class="col-md-12">
+        <h1>
+          <span id="h1-rectangle"></span>Matched candidate for the job
+        </h1>
+      </div>
+    </div>
+
+  <div *ngIf="jobCandidate.match">
+
+    <div class="padBottom30">
+      <h4>Job details</h4>
+      <div class="row">
+        <div class="col-md-4">
+          <b>Job Id:</b>
+        </div>
+        <div class="col-md-4">
+          {{jobCandidate.job?.jobId}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <b>Job Name:</b>
+        </div>
+        <div class="col-md-4">
+          {{jobCandidate.job?.name}}
+        </div>
+      </div>
+        <div class="row">
+        <div class="col-md-4">
+          <b>Company:</b>
+        </div>
+        <div class="col-md-4">
+          {{jobCandidate.job?.company}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <b>Skill required:</b>
+        </div>
+        <div class="col-md-6">
+          {{jobCandidate.job?.skills}}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h4>Most matched candidate</h4>
+      <div class="row">
+        <div class="col-md-4">
+          <b>Candidate Id:</b>
+        </div>
+        <div class="col-md-4">
+          {{jobCandidate.matchedCandidate?.candidateId}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <b>Candidate Name:</b>
+        </div>
+        <div class="col-md-4">
+          {{jobCandidate.matchedCandidate?.name}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <b>Skill matched:</b>
+        </div>
+        <div class="col-md-6">
+          <span *ngFor="let skill of  jobCandidate.matchedCandidate?.skill_Tag">
+            <b [ngClass]="{redFont: skillMatched(skill)}">{{skill}}</b> ,
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!jobCandidate.match">
+    <p>
+      No such a job or no matched candidate found.
+    </p>
+  </div>
+  </div>
+</section>

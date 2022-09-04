@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Job,JobService} from 'src/libs/api-client'
 
@@ -16,5 +17,7 @@ export class JobListComponent implements OnInit {
   ngOnInit(): void {
     this.jobs$ = this.jobService.apiJobGet();
   }
+
+
 
 }

@@ -27,14 +27,14 @@ import { JobCandidate } from '../model/jobCandidate';
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
-
+import {environment} from '../../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class JobService {
 
-    protected basePath = 'http://localhost:4200';
+    protected basePath = environment.apiUrl;
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
