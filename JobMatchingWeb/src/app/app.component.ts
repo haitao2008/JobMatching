@@ -8,7 +8,8 @@ import {
   NavigationStart,
   Router
 } from '@angular/router';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { SpinnerService } from './shared/spinner.service';
 
 @Component({
   selector: 'app-root',
@@ -21,14 +22,14 @@ export class AppComponent implements OnInit {
 
   loading = true;
   title = 'JobMatchingWeb';
-  spinner = new BehaviorSubject(false);
-  currentSpinner = this.spinner.asObservable();
+
+  currentSpinner: Observable<boolean>;
   subscriptions!: Subscription;
 
-  constructor(private router: Router ,private changeDetector: ChangeDetectorRef )
+  constructor(private router: Router ,private changeDetector: ChangeDetectorRef , private spinner: SpinnerService)
  {
   this.subscriptions = new Subscription();
-
+  this.currentSpinner = spinner.spinner.asObservable();
 }
 
   ngOnInit() {
@@ -36,14 +37,14 @@ export class AppComponent implements OnInit {
     this.subscriptions.add( this.router.events.subscribe((event: Event) => {
       switch (true) {
         case event instanceof NavigationStart: {
-          this.spinner.next(true);
+          this.spinner.showSpinner(true);
           break;
         }
 
         case event instanceof NavigationEnd:
         case event instanceof NavigationCancel:
         case event instanceof NavigationError: {
-          setTimeout(() => {  this.spinner.next(false); }, 1000);
+          setTimeout(() => {  this.spinner.showSpinner(false); }, 100);
           break;
         }
         default: {
